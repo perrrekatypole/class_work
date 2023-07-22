@@ -5,6 +5,7 @@ fn list(x:usize) -> [usize; 9] {
         result[ind] = x*(ind+1);
         ind+=1;
     }
+    
     result
 }
 fn main() {

@@ -1,24 +1,55 @@
-fn list(x:usize) -> [usize; 9] {
-    let mut result = [0; 9];
-    let mut ind = 0;
-    for el in result{
-        result[ind] = x*(ind+1);
-        ind+=1;
-    }
-    
-    result
+struct Company
+{
+    name: String,
+    profit: i32,
+    employers: [Employers; 15],
+    parts: [Parts;3]
+}
+struct Employers
+{
+    //name: String,
+    //part: i32,
+    id: i32
+}
+struct Parts
+{
+    //name: String,
+    id: i32
 }
 fn main() {
-    let mut x = 1;
-    let mut arr = [3;9];
-    for el in arr{
-    arr = list(x);
-    for n in 1..=9{
-        println!("{x} * {n} = {}", arr[n-1]);
+    impl Company
+    {   
+        fn numberE(&self) -> i32
+        {
+            let mut num = 0;
+            for x in 0..15{
+                if self.employers[x].id != 0{
+                    num+=1;
+                }
+            }
+            num
+        }
+        fn numberP(&self) -> i32
+        {
+            let mut num = 0;
+            for x in 0..3{
+                if self.parts[x].id != 0{
+                    num+=1;
+                }
+            }
+            num
+        }
     }
-    println!("");
-    x+=1;
-    }
+    let em: [Employers; 15] = [Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 4 },Employers { id: 5 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 },Employers { id: 0 }];
+    let pr: [Parts; 3] = [Parts { id: 0 },Parts { id: 2 },Parts { id: 0 }];
+    let mut comp: Company = Company{
+        name:String::from("Test"),
+        profit: 15000,
+        employers: em,
+        parts: pr
+    };
+    println!("Number of employers {}", comp.numberE());
+    println!("Number of parts {}", comp.numberP());
 }
 
 
@@ -26,122 +57,3 @@ fn main() {
 
 
 
-// fn main() {
-//     let mut x = 1;
-//     let mut arr = [3;9];
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 2;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 3;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 4;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 5;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 6;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 7;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 8;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-
-//     x = 9;
-//     arr = list(x);
-//     println!("{x} * 1 = {}", arr[0]);
-//     println!("{x} * 2 = {}", arr[1]);
-//     println!("{x} * 3 = {}", arr[2]);
-//     println!("{x} * 4 = {}", arr[3]);
-//     println!("{x} * 5 = {}", arr[4]);
-//     println!("{x} * 6 = {}", arr[5]);
-//     println!("{x} * 7 = {}", arr[6]);
-//     println!("{x} * 8 = {}", arr[7]);
-//     println!("{x} * 9 = {}", arr[8]);
-//     println!("");
-// }
